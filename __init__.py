@@ -37,7 +37,7 @@ class MappySkill(Skill):
 
         await message.respond(f"{deployments}")
 
-    @match_regex(r"^mappy(?P<deployment>dev|prd|stage) list groups$")
+    @match_regex(r"^mappy (?P<deployment>dev|prd|stage) list groups$")
     async def list_groups(self, message):
         deployment = message.regex.group("deployment")
         groups = await self._list_groups(deployment)
