@@ -27,7 +27,13 @@ class MappySkill(Skill):
     async def _list_groups(self, deployment):
         api_url = f"{self.config['sites'][deployment]['url']}/api/v1/groups"
         data = await self._rest_call(deployment, api_url, "get")
-        return data["_items"]
+
+        items = data["_items"]
+
+        return_text = f"*Mappy {deployment}*\n"
+        for i in items:
+            return_text = f"{return_text}```Name: {i['name']}```\n"
+        return return_text
 
     # Matching Functions
 
