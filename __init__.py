@@ -2,6 +2,9 @@ from opsdroid.skill import Skill
 from opsdroid.matchers import match_regex
 
 import aiohttp
+import logging
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class MappySkill(Skill):
@@ -17,7 +20,7 @@ class MappySkill(Skill):
         async with aiohttp.ClientSession(timeout=timeout) as session:
             if payload:
                 async with session.get(api_url, params=payload) as resp:
-                    print(resp.url)
+                    _LOGGER.info(resp.url)
                     data = await resp.json()
                     return data
             else:
@@ -40,7 +43,7 @@ class MappySkill(Skill):
         api_url = f"{self.config['sites'][deployment]['url']}/api/v1/groups"
         lookup = "{{'name': '{name}'}}"
         payload = {"where": lookup}
-        print(payload)
+        _LOGGER.info(payload)
         data = await self._rest_call(deployment, api_url, payload)
 
         if "_items" in data:
