@@ -43,7 +43,7 @@ class MappySkill(Skill):
         print(payload)
         data = await self._rest_call(deployment, api_url, payload)
 
-        if data["_items"]:
+        if "_items" in data:
             for i in data["_items"]:
                 group_id = i["_id"]
             data = (
