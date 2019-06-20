@@ -49,7 +49,7 @@ class MappySkill(Skill):
             return_text = f"*Mappy {deployment}*\n"
             return_text = f"{return_text}```Name: {i['name']} ID: {i['_id']}```\n"
             return_text = f"{return_text}```Hosts:\n{i['hosts']}```\n"
-            return_text = f"{return_text}```Group Vars:\n {i['group_vars']}```\n"
+            return_text = f"{return_text}```Group Vars:\n {i['groupvars']}```\n"
             return return_text
         else:
             return_text = f"*Mappy {deployment}*\n"
