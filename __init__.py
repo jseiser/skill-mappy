@@ -48,23 +48,23 @@ class MappySkill(Skill):
 
         if "_items" in data:
             for i in data["_items"]:
-                group_id = i["_id"]
-                name = i["name"]
+                # group_id = i["_id"]
+                # name = i["name"]
                 hosts = i["hosts"]
-                group_vars = i["groupvars"]
+                # group_vars = i["groupvars"]
 
-            return_text = f"*Mappy {deployment}*\n"
-            return_text = f"{return_text}```Name: {name}\nID: {group_id}```\n"
+            # return_text = f"*Mappy {deployment}*\n"
+            # return_text = f"{return_text}```Name: {name}\nID: {group_id}```\n"
             # return_text = f"{return_text}```Hosts:\n{i['hosts']}```\n"
-            return_text = f"{return_text}*Hosts*\n"
+            # return_text = f"{return_text}*Hosts*\n"
             host_line = "\n".join(hosts)
             _LOGGER.info(host_line)
-            return_text = f"{return_text}```{host_line}```\n"
-            return_text = f"{return_text}*Group Vars*\n"
-            group_var_lines = ""
-            for group_var in group_vars:
-                group_var_lines = f"{group_var_lines}{group_var}\n"
-            return_text = f"{return_text}```{group_var_lines}```\n"
+            return_text = f"```{host_line}```"
+            # return_text = f"{return_text}*Group Vars*\n"
+            # group_var_lines = ""
+            # for group_var in group_vars:
+            #     group_var_lines = f"{group_var_lines}{group_var}\n"
+            # return_text = f"{return_text}```{group_var_lines}```\n"
             return return_text
         else:
             return_text = f"*Mappy {deployment}*\n"
