@@ -32,7 +32,7 @@ class MappySkill(Skill):
 
         return_text = f"*Mappy {deployment}*\n"
         for i in items:
-            return_text = f"{return_text}```Name: {i['name']}```\n"
+            return_text = f"{return_text}```Name: {i['name']} ID: {i['_id']}```\n"
         return return_text
 
     # Matching Functions
