@@ -49,12 +49,19 @@ class MappySkill(Skill):
         if "_items" in data:
             for i in data["_items"]:
                 group_id = i["_id"]
+                name = i["name"]
             data = (
                 api_url
             ) = f"{self.config['sites'][deployment]['url']}/api/v1/groups/{group_id}"
+            items = data["_items"]
             return_text = f"*Mappy {deployment}*\n"
-            return_text = f"{return_text}```Name: {i['name']} ID: {i['_id']}```\n"
-            return_text = f"{return_text}```Hosts:\n{i['hosts']}```\n"
+            return_text = f"{return_text}```Name: {name}\nID: {group_id}```\n"
+            # return_text = f"{return_text}```Hosts:\n{i['hosts']}```\n"
+            return_text = f"{return_text}```Hosts```\n"
+            host_lines = ""
+            for host in items["hosts"]:
+                host_lines = f"{host_lines}{host}\n"
+            return_text = f"{return_text}```{host_lines}```\n"
             return_text = f"{return_text}```Group Vars:\n {i['groupvars']}```\n"
             return return_text
         else:
