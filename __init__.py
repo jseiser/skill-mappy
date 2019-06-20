@@ -17,6 +17,7 @@ class MappySkill(Skill):
         async with aiohttp.ClientSession(timeout=timeout) as session:
             if payload:
                 async with session.get(api_url, params=payload) as resp:
+                    print(resp.url)
                     data = await resp.json()
                     return data
             else:
@@ -37,7 +38,9 @@ class MappySkill(Skill):
 
     async def _get_group_name(self, deployment, name):
         api_url = f"{self.config['sites'][deployment]['url']}/api/v1/groups"
-        payload = {"where": {"name": name}}
+        lookup = "{{'name': '{name}'}}"
+        payload = {"where": lookup}
+        print(payload)
         data = await self._rest_call(deployment, api_url, payload)
 
         if data["_items"]:
