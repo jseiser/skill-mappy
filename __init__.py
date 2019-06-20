@@ -16,7 +16,7 @@ class MappySkill(Skill):
         timeout = aiohttp.ClientTimeout(total=60)
         async with aiohttp.ClientSession(timeout=timeout) as session:
             if payload:
-                async with session.get(api_url, data=payload) as resp:
+                async with session.get(api_url, params=payload) as resp:
                     data = await resp.json()
                     return data
             else:
