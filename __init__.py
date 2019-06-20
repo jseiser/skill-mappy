@@ -52,8 +52,8 @@ class MappySkill(Skill):
                 name = i["name"]
                 hosts = i["hosts"]
                 # group_vars = i["groupvars"]
-            host_line = "\n".join(hosts)
-            return_text = f"*Mappy {deployment}*\n```Name: {name}\nID: {group_id}```\n`{host_line}`"
+            # host_line = "\n".join(hosts)
+            return_text = f"*Mappy {deployment}*\n```Name: {name}\nID: {group_id}```\n*Hosts*\n```{hosts}```"
             return return_text
         else:
             return_text = f"*Mappy {deployment}*\n"
