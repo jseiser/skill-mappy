@@ -41,7 +41,7 @@ class MappySkill(Skill):
 
     async def _get_group_name(self, deployment, name):
         api_url = f"{self.config['sites'][deployment]['url']}/api/v1/groups"
-        lookup = "{{'name': '{name}'}}"
+        lookup = f"{{'name': '{name}'}}"
         payload = {"where": lookup}
         _LOGGER.info(payload)
         data = await self._rest_call(deployment, api_url, payload)
