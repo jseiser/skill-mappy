@@ -57,10 +57,8 @@ class MappySkill(Skill):
             return_text = f"{return_text}```Name: {name}\nID: {group_id}```\n"
             # return_text = f"{return_text}```Hosts:\n{i['hosts']}```\n"
             return_text = f"{return_text}```Hosts```\n"
-            host_lines = ""
-            for host in hosts:
-                host_lines = f"{host_lines}{host}\n"
-            return_text = f"{return_text}```{host_lines}```\n"
+            host_line = "\n".join(hosts)
+            return_text = f"{return_text}```{host_line}```\n"
             return_text = f"{return_text}```Group Vars```\n"
             group_var_lines = ""
             for group_var in group_vars:
